@@ -1,0 +1,23 @@
+{
+  "name": "real-estate-predictor",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "python server.py",
+    "start": "python server.py",
+    "serve": "python -m http.server 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajdeep183/Real-Estate-Predictor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rajdeep183/Real-Estate-Predictor/issues"
+  },
+  "homepage": "https://github.com/Rajdeep183/Real-Estate-Predictor#readme",
+  "description": ""
+}

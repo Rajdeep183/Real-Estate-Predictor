@@ -13,7 +13,7 @@ def get_estimated_price(location, sqft, bhk, bath):
     except:
         loc_index = -1
 
-    x = np.zeros(240)
+    x = np.zeros(len(__data_columns))
     x[0] = sqft
     x[1] = bath
     x[2] = bhk
@@ -32,11 +32,11 @@ def load_saved_artifacts():
     global __locations
     global __model
 
-    with open(r"C:\Users\HP\OneDrive\Desktop\mainfold\artifacts\columns.json") as f:
+    with open("columns.json") as f:
         __data_columns = json.load(f)['data_columns']
         __locations = __data_columns[3:]
 
-    with open(r"C:\Users\HP\OneDrive\Desktop\mainfold\banglore_home_prices_model.pickle", 'rb') as f:
+    with open("banglore_home_prices_model.pickle", 'rb') as f:
         __model = pickle.load(f)
     print("loading...done")
 
