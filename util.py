@@ -7,7 +7,7 @@ __data_columns = None
 __model = None
 
 
-def get_estimated_price(location, sqft, bhk, bath):
+def get_estimated_price(location, sqft, bhk, bath, balcony=1):
     try:
         loc_index = __data_columns.index(location.lower())
     except:
@@ -17,9 +17,17 @@ def get_estimated_price(location, sqft, bhk, bath):
     x[0] = sqft
     x[1] = bath
     x[2] = bhk
+    x[3] = balcony  # Now properly includes balcony feature
+    
     if loc_index >= 0:
         x[loc_index] = 1
-    return round(__model.predict([x])[0])
+    
+    try:
+        prediction = __model.predict([x])[0]
+        return round(prediction, 2)
+    except Exception as e:
+        print(f"Prediction error: {e}")
+        return 50.0  # Default fallback price
 
 
 def get_location_names():

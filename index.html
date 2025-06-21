@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangalore Home Price Predictor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <div class="prediction-card">
+            <div class="header">
+                <h1>🏠 Home Price Predictor</h1>
+                <p>Get accurate price estimates for properties in Bangalore</p>
+            </div>
+
+            <div class="feature-icons">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                    <span>AI Powered</span>
+                </div>
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Location Based</span>
+                </div>
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                    <span>Instant Results</span>
+                </div>
+            </div>
+
+            <form class="prediction-form">
+                <div class="form-group">
+                    <label class="form-label" for="uiSqft">
+                        <i class="fas fa-ruler-combined"></i> Total Area (Square Feet)
+                    </label>
+                    <input class="form-input" type="number" id="uiSqft" name="Squareft" value="1000" min="500" max="10000" placeholder="Enter area in sq ft">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-bed"></i> Number of Bedrooms (BHK)
+                    </label>
+                    <div class="switch-field">
+                        <input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+                        <label for="radio-bhk-1">1 BHK</label>
+                        <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
+                        <label for="radio-bhk-2">2 BHK</label>
+                        <input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+                        <label for="radio-bhk-3">3 BHK</label>
+                        <input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+                        <label for="radio-bhk-4">4 BHK</label>
+                        <input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+                        <label for="radio-bhk-5">5+ BHK</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-bath"></i> Number of Bathrooms
+                    </label>
+                    <div class="switch-field">
+                        <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+                        <label for="radio-bath-1">1</label>
+                        <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
+                        <label for="radio-bath-2">2</label>
+                        <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+                        <label for="radio-bath-3">3</label>
+                        <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+                        <label for="radio-bath-4">4</label>
+                        <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+                        <label for="radio-bath-5">5+</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uiLocations">
+                        <i class="fas fa-map-marker-alt"></i> Location
+                    </label>
+                    <select class="form-select" id="uiLocations" name="location" required>
+                        <option value="" disabled selected>Choose a location...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uiBalcony">
+                        <i class="fas fa-home"></i> Number of Balconies
+                    </label>
+                    <select class="form-select" id="uiBalcony" name="balcony">
+                        <option value="0">0</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+
+                <button class="submit-btn" type="button" onclick="onClickedEstimatePrice()">
+                    <i class="fas fa-calculator"></i> Calculate Price
+                </button>
+
+                <div id="uiEstimatedPrice" class="result">
+                    <h2></h2>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,9 @@ import util
 
 app = Flask(__name__)
 
+# Initialize the model when the module is imported (for Vercel)
+util.load_saved_artifacts()
+
 
 @app.route('/')
 def index():
@@ -35,15 +38,22 @@ def predict_home_price():
     location = request.form['location']
     bhk = int(request.form['bhk'])
     bath = int(request.form['bath'])
+    balcony = int(request.form.get('balcony', 1))  # Default to 1 if not provided
 
     response = jsonify({
-        'estimated_price': util.get_estimated_price(location, total_sqft, bhk, bath)
+        'estimated_price': util.get_estimated_price(location, total_sqft, bhk, bath, balcony)
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 
+# For Vercel serverless deployment
+if __name__ != "__main__":
+    # This ensures the app is properly initialized for Vercel
+    util.load_saved_artifacts()
+
 if __name__ == "__main__":
     print("Starting Python Flask Server For Home Price Prediction...")
     util.load_saved_artifacts()
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5001))
+    app.run(host='0.0.0.0', port=port, debug=False)
