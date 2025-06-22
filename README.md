@@ -1,5 +1,7 @@
 # Real Estate Predictor
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?logo=vercel)](https://real-estate-predictor.vercel.app/)
+
 A machine learning-powered web application that predicts real estate prices in Bangalore based on location, size, bathrooms, and other property features.
 
 ## 📋 Project Overview
